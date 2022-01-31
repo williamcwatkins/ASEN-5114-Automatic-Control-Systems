@@ -76,6 +76,7 @@ for i = 2:length(g)
 end
 reax = zeros(3,101);
 
+figure('Position', [200 200 1000 800]);
 % roots are all real, so can just plot on Real axis
 plot(rg,reax,'*','MarkerFaceColor',[0 0.447 0.741])
 % set(gca, 'XScale', 'log');
@@ -90,6 +91,21 @@ for i = 2:length(g4)
     rg4(:,i) = roots(pg4(i,:));
 end
 
+figure('Position', [200 200 1000 800]);
 plot(rg4,'*','MarkerFaceColor',[0 0.447 0.741])
-% set(gca, 'XScale', 'log');
-% set(gca, 'YScale', 'log');
+
+% Still need to figure out how to scale properly
+
+%% Problem 5
+g5 = 0:-0.01:-1;
+pg5 = [Jeq*Lm/(N*Ktau) (Jeq*Rm/(N*Ktau)) N*Kb-g5(1)*Gd -g5(1)*Gp];
+rg5(:,1) = roots(pg5(1,:));
+for i = 2:length(g5)
+    pg5(i,:) = [Jeq*Lm/(N*Ktau) (Jeq*Rm/(N*Ktau)) N*Kb-g5(i)*Gd -g5(i)*Gp];
+    rg5(:,i) = roots(pg5(i,:));
+end
+
+figure('Position', [200 200 1000 800]);
+plot(rg5,reax,'*','MarkerFaceColor',[0 0.447 0.741])
+
+%% Problem 6
